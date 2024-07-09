@@ -1,0 +1,13 @@
+      on_complete = {
+        function(self)
+          local lines = self.manager:num_results()
+          local prompt = action_state.get_current_line()
+          if lines == 0 and prompt == "" then
+            utils.notify("builtin.git_status", {
+              msg = "No changes found",
+              level = "ERROR",
+            })
+            actions.close(self.prompt_bufnr)
+          end
+        end,
+      },

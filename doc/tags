@@ -1,0 +1,8 @@
+hop_actions._hop()	telescope-hop.txt	/*hop_actions._hop()*
+hop_actions._hop_loop()	telescope-hop.txt	/*hop_actions._hop_loop()*
+hop_actions.hop()	telescope-hop.txt	/*hop_actions.hop()*
+hop_actions.hop_toggle_selection()	telescope-hop.txt	/*hop_actions.hop_toggle_selection()*
+telescope-hop.actions	telescope-hop.txt	/*telescope-hop.actions*
+telescope-hop.nvim	telescope-hop.txt	/*telescope-hop.nvim*
+telescope-hop.setup	telescope-hop.txt	/*telescope-hop.setup*
+telescope_hop.setup()	telescope-hop.txt	/*telescope_hop.setup()*
