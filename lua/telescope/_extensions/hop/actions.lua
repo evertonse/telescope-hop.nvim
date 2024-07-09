@@ -115,7 +115,7 @@ hop_actions._hop = function(prompt_bufnr, opts)
 	local keyline = {}
 	for i = 1, math.min(num_results, max_results, #opts.keys) do
 		local key = opts.keys[i]
-		local linenr = sorting_strategy == "descending" and max_results - i or i
+		local linenr = (sorting_strategy == "descending" and max_results - i or i) - 1
 
 		if opts.line_hl ~= nil then
 			local line_hl = type(opts.line_hl) == "table" and opts.line_hl[math.pow(2, i % 2)] or opts.line_hl
@@ -134,11 +134,15 @@ hop_actions._hop = function(prompt_bufnr, opts)
 		end
 
 		local sign_hl = type(opts.sign_hl) == "table" and opts.sign_hl[math.pow(2, i % 2)] or opts.sign_hl
-		vim.api.nvim_buf_set_extmark(results_bufnr, ns, linenr, 0, {
+		local opts_extmarks = {
 			virt_text = { { key, sign_hl } },
 			virt_text_pos = opts.sign_virt_text_pos,
 			hl_mode = "combine",
-		})
+		}
+		if opts.sign_virt_text_pos == "inline" then
+			opts_extmarks["end_col"] = 0
+		end
+		vim.api.nvim_buf_set_extmark(results_bufnr, ns, linenr, 0, opts_extmarks)
 
 		keyline[key] = linenr
 	end
